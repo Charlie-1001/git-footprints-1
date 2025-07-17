@@ -282,6 +282,9 @@
       }
 
       // To check the answer
+      let hits1 = 0;
+      let hits2 = 0;
+
       function checkAnswer(letterBox, Index) {
         const unscrumbledWord = Array.from(letterBox.children).map(child => child.textContent).join('');
         const originalWord = wordList[Index].word;
@@ -293,10 +296,12 @@
         if (unscrumbledWord === originalWord) {
           correctSound.play();
           if (letterBox === letterBox1) {
+            hits1 += 1;
             longWord ? correctScoreValue1 += 8 : correctScoreValue1 += 5;
             correctScore1.textContent = correctScoreValue1;
             Array.from(letterBox1.children).forEach(letter => letter.style.backgroundColor = "rgb(7, 175, 7)");
           } else {
+            hits2 += 1;
             longWord ? correctScoreValue2 += 8 : correctScoreValue2 += 5;
             correctScore2.textContent = correctScoreValue2;
             Array.from(letterBox2.children).forEach(letter => letter.style.backgroundColor = "rgb(7, 175, 7)");
@@ -320,7 +325,7 @@
           totalScore1.textContent = totalScoreValue1;
           totalScore1.style.color = totalScoreValue1 > 0 ? "greenyellow" : "red";
 
-          if (correctScoreValue1 > 0 && correctScoreValue1 % 25 === 0) {
+          if (hits1 > 0 && hits1 % 5 === 0) {
             bonusScoreValue1 += 10;
             bonusScore1.textContent = bonusScoreValue1;
           }
@@ -329,7 +334,7 @@
             totalScore2.textContent = totalScoreValue2;
             totalScore2.style.color = totalScoreValue2 > 0 ? "greenyellow" : "red";
 
-            if (correctScoreValue2 > 0 && correctScoreValue2 % 25 === 0) {
+            if (hits2 > 0 && hits2 % 5 === 0) {
               bonusScoreValue2 += 10;
               bonusScore2.textContent = bonusScoreValue2;
             }
