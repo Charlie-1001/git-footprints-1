@@ -130,8 +130,6 @@
               }
             }
             if (!inserted) dropzone.appendChild(newBubble);
-          } else {
-            return;
           }
 
           letter.remove(); // to remove the dragged letter visually
@@ -284,13 +282,13 @@
       // To check the answer
       let hits1 = 0;
       let hits2 = 0;
+      const correctSound = new Audio('./sounds/correct.mp3');
+      const incorrectSound = new Audio('./sounds/incorrect.mp3');
 
       function checkAnswer(letterBox, Index) {
         const unscrumbledWord = Array.from(letterBox.children).map(child => child.textContent).join('');
         const originalWord = wordList[Index].word;
         const longWord = unscrumbledWord.length > 5 ? true : false;
-        const correctSound = new Audio('./sounds/correct.mp3');
-        const incorrectSound = new Audio('./sounds/incorrect.mp3');
 
         // checking the correct and incorrect answers
         if (unscrumbledWord === originalWord) {

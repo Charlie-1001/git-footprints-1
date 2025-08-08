@@ -22,12 +22,12 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
-        height: 32rem;
+        height: 85%;
       }
 
       .team {
         width: 49%;
-        height: 32rem;
+        height: 100%;
         background-color: rgb(180, 178, 178);
         border: 5px solid rgb(228, 175, 1);
         border-radius: 1rem;
